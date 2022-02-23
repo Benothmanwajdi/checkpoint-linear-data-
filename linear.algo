@@ -1,0 +1,61 @@
+ALGORITHM distinct and overlapping elements
+VAR
+    tab1, tab2:array of INTEGER[10]
+    i:INTEGER
+    HASH_TABLE<integer,integer>
+BEGIN
+    tab1:={3,1,7,9}
+    tab2:={2,4,1,9,3}
+    //insert elements of tab1[]to hashtable
+ FOR i from 0 to tab1.lenght-1 do 
+   IF (hashtable.containsKey(tab1[i])) THEN
+       HASH_TABLE.insert(tab1[i],hashtable.get(tab1[i])+1)
+        else
+        hashtable.insert(tab1[i],1);
+
+   END_IF
+  END_FOR
+    //insert elements of tab2[]to hashtable
+  FOR i from 0 to tab2.lenght-1 do
+  IF (hashtable.containsKey(tab2[i])) THEN
+      hashtable.insert(tab2[i],hashtable.get(tab2[i])+1);
+      else
+      hashtable.insert(tab2[i], 1)
+  END_IF  
+  END_FOR
+
+
+  //sum of distinct elements
+  sum=0
+  FOR (auto x=hashtable)
+      IF (x.second == 1) THEN
+        sum= sum + x.first;
+        END_IF
+        END_FOR
+
+  //sum of overlaping elements
+
+
+    FOR(auto x:hashtable)
+       IF (x.second <> 1) THEN
+         sum= sum + (x.first * x.second);
+          END_IF
+          END_FOR
+
+
+  END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+END
